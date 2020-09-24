@@ -27,6 +27,16 @@ const SignUp = () => {
         <input type='text' name='givenName' ref={register} />
         {errors.givenName && <p>{errors.givenName.message}</p>}
 
+        <label>地域</label>
+        <select name='region' ref={register}>
+          <option value=''>地域</option>
+          <option value='japan'>日本</option>
+          <option value='china'>中国</option>
+          <option value='taiwan'>台湾</option>
+          <option value='hongkong'>香港</option>
+        </select>
+
+
         <label>パスワード</label>
         <input type='password' name='password' ref={register} />
         {errors.password && <p>{errors.password.message}</p>}

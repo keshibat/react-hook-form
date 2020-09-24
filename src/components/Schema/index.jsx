@@ -7,20 +7,17 @@ const Schema = yup.object().shape({
     .min(5)
     .matches(/^[A-Za-z0-9-_]+$/i),
 
-  familyName: yup
-    .string()
-    .required('姓は必須です。')
-    .max(50),
+  familyName: yup.string().required('姓は必須です。').max(50),
 
-  givenName: yup
-    .string()
-    .required('名は必須です。')
-    .max(50),
+  givenName: yup.string().required('名は必須です。').max(50),
 
-  password:yup
-  .string()
-  .required('パスワードは最低8文字です。')
-  .min(8),
+  region: yup
+    .string()
+    .oneOf(['japan', 'china', 'taiwan', 'hongkong'])
+    .required('地域選択は必須です。'),
+
+
+  password: yup.string().required('パスワードは最低8文字です。').min(8),
 
   confirmPassword: yup
     .string()
