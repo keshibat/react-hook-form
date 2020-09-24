@@ -19,6 +19,14 @@ const SignUp = () => {
         <input type='text' name='userId' ref={register} />
         {errors.userId && <p>{errors.userId.message}</p>}
 
+        <label>姓</label>
+        <input type='text' name='familyName' ref={register} />
+        {errors.familyName && <p>{errors.familyName.message}</p>}
+
+        <label>名</label>
+        <input type='text' name='givenName' ref={register} />
+        {errors.givenName && <p>{errors.givenName.message}</p>}
+
         <label>パスワード</label>
         <input type='password' name='password' ref={register} />
         {errors.password && <p>{errors.password.message}</p>}
