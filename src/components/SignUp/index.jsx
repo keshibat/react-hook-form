@@ -1,11 +1,11 @@
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers';
+import Schema from '../Schema';
 import './SignUp.css';
 
-
 const SignUp = () => {
-
-  const {handleSubmit, register, errors} = useForm();
+  const { handleSubmit, register, errors } = useForm({resolver: yupResolver(Schema)});
 
   const onSubmit = (formData) => {
     console.log(formData);
@@ -16,13 +16,21 @@ const SignUp = () => {
       <h1>個人アカウント</h1>
       <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
         <label>ユーザーID</label>
-        <input
-          type='text'
-          name='userId'
-          ref={register({required: true, minLength: 5})}
-        />
-        {errors.userId && <p>UserIDは5文字以上</p>}
+        <input type='text' name='userId' ref={register} />
+        {errors.userId && <p>{errors.userId.message}</p>}
 
+        <label>パスワード</label>
+        <input type='password' name='password' ref={register} />
+        {errors.password && <p>{errors.password.message}</p>}
+
+        <label>パスワード確認</label>
+        <input type='password' name='confirmPassword' ref={register} />
+        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+
+        <span>
+          <input type='checkbox' name='agreement' ref={register} />
+          <label>サービス利用規約に合意します</label>
+        </span>
 
         <button type='submit'>Submit</button>
       </form>
@@ -31,24 +39,3 @@ const SignUp = () => {
 }
 
 export default SignUp;
-
-
-      // <label>姓</label>
-      //   <input type='text' name='firstName' />
-
-      //   <label>名</label>
-      //   <input type='text' name='LastName' />
-
-      //   <label>メール</label>
-      //   <input type='text' name='email' />
-
-      //   <label>パスワード</label>
-      //   <input type='password' name='password' />
-
-      //   <label>地域</label>
-      //   <input type='number' name='region' />
-
-      //   <span>
-      //     <input type='checkbox' name='remember' ref={register} />
-      //     <label>サービス利用規約に合意します</label>
-      //   </span>
