@@ -16,6 +16,10 @@ const Schema = yup.object().shape({
     .oneOf(['japan', 'china', 'taiwan', 'hongkong'])
     .required('地域選択は必須です。'),
 
+    email: yup
+    .string()
+    .email()
+    .required('Eメールは必須です。'),
 
   password: yup.string().required('パスワードは最低8文字です。').min(8),
 

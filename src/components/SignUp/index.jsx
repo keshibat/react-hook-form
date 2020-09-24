@@ -36,6 +36,9 @@ const SignUp = () => {
           <option value='hongkong'>香港</option>
         </select>
 
+        <label>Eメール</label>
+        <input name='email' type='email' ref={register} />
+        {errors.email && <p>{errors.email.message}</p>}
 
         <label>パスワード</label>
         <input type='password' name='password' ref={register} />
